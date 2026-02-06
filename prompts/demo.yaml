@@ -1,0 +1,10 @@
+# Infinite World - Demo Prompts
+# Format: [prompt, condition_image_path, action_json_path]
+prompts:
+  - - A serene campus walkway lined with modern glass buildings, green ivy climbing some walls, empty benches, soft dappled sunlight through maple trees.
+    - ./assets/example_case/0001.jpg
+    - ./assets/example_case/0001.json
+  
+  - - A street in a fantasy city where buildings are carved into gargantuan ancient trees, glowing sap running through bark, misty floor.
+    - ./assets/example_case/0002.jpg
+    - ./assets/example_case/0002.json

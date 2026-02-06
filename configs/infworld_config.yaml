@@ -1,0 +1,73 @@
+# Infinite World - Model Configuration
+# Download from https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B and put files under checkpoints/models/
+# Paths below are relative to project root unless absolute.
+
+##########################
+### DiT checkpoint (from config)
+##########################
+# HF: diffusion_pytorch_model.safetensors; or your training .ckpt
+checkpoint_path: "checkpoints/infinite_world_model.ckpt"
+
+##########################
+### text encoder config
+##########################
+
+text_encoder_target: infworld.models.umt5.T5EncoderModel
+
+text_encoder_cfg:
+  checkpoint_path: "checkpoints/models/models_t5_umt5-xxl-enc-bf16.pth"
+  tokenizer_path: "checkpoints/models/google/umt5-xxl"
+  model_max_length: 512
+
+##########################
+### scheduler config
+##########################
+
+scheduler_target: infworld.models.scheduler.RFlowScheduler
+
+val_scheduler_cfg:
+  shift: 7.0  # PX256: 3, PX627: 7, PX960: 11
+  use_reversed_velocity: true
+  use_timestep_transform: true
+  num_sampling_steps: 30
+  audio_cfg_scale: 5.0
+  text_cfg_scale: 5.0
+
+##########################
+### model config
+##########################
+
+model_target: infworld.models.dit_model.WanModel
+
+# 1.3B model config
+model_cfg:
+  model_type: t2v
+  dim: 1536
+  in_channels: 20
+  ffn_dim: 8960
+  freq_dim: 256
+  num_heads: 12
+  num_layers: 30
+
+##########################
+### VAE config
+##########################
+
+vae_target: infworld.vae.WanVAEModelWrapper
+
+vae_cfg:
+  vae_pth: "checkpoints/models/Wan2.1_VAE.pth"
+
+
+##########################
+### validation config
+##########################
+
+validation_data:
+  num_frames: 81
+
+##########################
+### other config
+##########################
+
+amp_dtype: "bfloat16"
