@@ -75,7 +75,7 @@ All model paths are configured in **`configs/infworld_config.yaml`**. Paths are 
 
 ### Download checkpoints
 
-Download from [Wan-AI/Wan2.1-T2V-1.3B](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B) and place files under `checkpoints/`:
+Download checkpoints from [https://huggingface.co/MeiGen-AI/Infinite-World](https://huggingface.co/MeiGen-AI/Infinite-World) and place files under `checkpoints/`:
 
 | File / directory | Config key | Description |
 |------------------|------------|-------------|
@@ -85,37 +85,6 @@ Download from [Wan-AI/Wan2.1-T2V-1.3B](https://huggingface.co/Wan-AI/Wan2.1-T2V-
 | `infinite_world_model.ckpt` | `checkpoint_path` | DiT model weights |
 
 
-
-- **DiT checkpoint:** Can be downloaded from [TBD]().
-
----
-
-## Upload to Hugging Face (including checkpoints)
-
-To upload this repo to Hugging Face Hub (code + `checkpoints/`):
-
-1. **Login**
-   ```bash
-   pip install huggingface_hub
-   huggingface-cli login
-   ```
-   Use a token from [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) (need write permission).
-
-2. **Upload**
-   From the project root (`infinite-world/`):
-   ```bash
-   python scripts/upload_to_hf.py YOUR_USERNAME/infinite-world
-   ```
-   Or set the repo and run:
-   ```bash
-   export HF_REPO_ID=YOUR_USERNAME/infinite-world
-   python scripts/upload_to_hf.py
-   ```
-
-   The script uploads the whole directory (including `checkpoints/`) and skips `__pycache__`, `outputs`, `.git`, etc. Large checkpoint files are uploaded via the Hub API; the first run may take a while depending on size and network.
-
-3. **Create repo manually (optional)**  
-   You can create the model repo first at [https://huggingface.co/new](https://huggingface.co/new) (type: **Model**), then run the script with that `repo_id`.
 
 ---
 
